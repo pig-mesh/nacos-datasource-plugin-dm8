@@ -1,0 +1,9 @@
+com.pig4cloud.plugin.impl.dm.ConfigInfoAggrMapperByDm
+com.pig4cloud.plugin.impl.dm.ConfigInfoBetaMapperByDm
+com.pig4cloud.plugin.impl.dm.ConfigInfoMapperByDm
+com.pig4cloud.plugin.impl.dm.ConfigInfoTagMapperByDm
+com.pig4cloud.plugin.impl.dm.ConfigTagsRelationMapperByDm
+com.pig4cloud.plugin.impl.dm.HistoryConfigInfoMapperByDm
+com.pig4cloud.plugin.impl.dm.TenantInfoMapperByDm
+com.pig4cloud.plugin.impl.dm.TenantCapacityMapperByDm
+com.pig4cloud.plugin.impl.dm.GroupCapacityMapperByDm
