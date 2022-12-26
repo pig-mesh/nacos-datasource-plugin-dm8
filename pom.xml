@@ -11,7 +11,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.pig4cloud.plugin</groupId>
   <artifactId>nacos-datasource-plugin-dm8</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.0.1</version>
   <name>nacos-datasource-plugin-dm8</name>
   <description>nacos-datasource-plugin-dm8</description>
   <url>https://pig4cloud.com</url>
