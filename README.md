@@ -19,7 +19,7 @@
 [数据库脚本](./sql/nacos.sql)
 
 ## 3.配置 nacos 数据源链接信息
-```aidl
+```
 db:
   num: 1
   url:
@@ -33,7 +33,7 @@ db:
 
 
 ## 4.执行数据库平台
-```aidl
+```
 spring:
   datasource:
     platform: dameng 
