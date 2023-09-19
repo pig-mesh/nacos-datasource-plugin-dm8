@@ -38,7 +38,7 @@ Nacos 从 2.2.0 版本开始,可通过 SPI 机制注入多数据源实现插件,
 db:
   num: 1
   url:
-    0: jdbc:dm://172.27.0.5:5236/nacos
+    0: jdbc:dm://172.27.0.5:5236?schema=nacos
   user: nacos
   password: nacos@123
   pool:
