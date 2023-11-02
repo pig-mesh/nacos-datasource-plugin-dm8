@@ -28,6 +28,11 @@ public class HistoryConfigInfoMapperByDm extends DmAbstractMapper implements His
 	}
 
 	@Override
+	public String pageFindConfigHistoryFetchRows(int i, int i1) {
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
 	public String detailPreviousConfigHistory() {
 		return "SELECT nid,data_id,group_id,tenant_id,app_name,content,md5,src_user,src_ip,op_type,gmt_create,gmt_modified "
 				+ "FROM his_config_info WHERE nid = (SELECT max(nid) FROM his_config_info WHERE id = ?) ";

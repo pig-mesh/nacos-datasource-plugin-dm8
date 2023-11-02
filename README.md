@@ -19,7 +19,7 @@ Nacos 从 2.2.0 版本开始,可通过 SPI 机制注入多数据源实现插件,
 <dependency>
     <groupId>com.pig4cloud.plugin</groupId>
     <artifactId>nacos-datasource-plugin-dm8</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
 </dependency>
 
 <dependency>

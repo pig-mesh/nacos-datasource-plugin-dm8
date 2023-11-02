@@ -3,7 +3,7 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.7.6</version>
+    <version>2.7.15</version>
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
 
@@ -11,7 +11,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.pig4cloud.plugin</groupId>
   <artifactId>nacos-datasource-plugin-dm8</artifactId>
-  <version>0.0.1</version>
+  <version>0.0.2</version>
   <name>nacos-datasource-plugin-dm8</name>
   <description>nacos-datasource-plugin-dm8</description>
   <url>https://pig4cloud.com</url>
@@ -25,7 +25,7 @@
   </licenses>
 
   <properties>
-    <nacos.version>2.2.0</nacos.version>
+    <nacos.version>2.2.4</nacos.version>
     <spring.checkstyle.plugin>0.0.32</spring.checkstyle.plugin>
     <maven.compiler.version>3.8.1</maven.compiler.version>
     <maven.compiler.source>1.8</maven.compiler.source>

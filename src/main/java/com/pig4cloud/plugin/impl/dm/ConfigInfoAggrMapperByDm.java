@@ -8,7 +8,6 @@ import java.util.List;
 
 public class ConfigInfoAggrMapperByDm extends DmAbstractMapper implements ConfigInfoAggrMapper {
 
-	@Override
 	public String batchRemoveAggr(List<String> datumList) {
 		final StringBuilder datumString = new StringBuilder();
 		for (String datum : datumList) {
