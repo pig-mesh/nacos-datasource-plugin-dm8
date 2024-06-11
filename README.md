@@ -1,4 +1,5 @@
-Nacos 从 2.2.0 版本开始,可通过 SPI 机制注入多数据源实现插件,并在引入对应数据源实现后,便可在 Nacos 启动时通过读取 application.properties 配置文件中 spring.datasource.platform 配置项选择加载对应多数据源插件.
+Nacos 从 2.2.0 版本开始,可通过 SPI 机制注入多数据源实现插件,并在引入对应数据源实现后,便可在 Nacos 启动时通过读取
+application.properties 配置文件中 spring.datasource.platform 配置项选择加载对应多数据源插件.
 
 ![Nacos 插件化实现
 ](https://minio.pigx.top/oss/202212/1671179590.jpg)
@@ -13,27 +14,34 @@ Nacos 从 2.2.0 版本开始,可通过 SPI 机制注入多数据源实现插件,
 
 > 依赖已上传 maven 中央仓库，请勿使用阿里云代理
 
+| NACOS 版本      | 插件版本  |
+|---------------|-------|
+| 2.2.0 - 2.3.0 | 0.2.0 |
+| 2.3.1 - 2.3.2 | 0.3.0 |
 
 ```xml
 <!--达梦数据库插件-->
 <dependency>
     <groupId>com.pig4cloud.plugin</groupId>
     <artifactId>nacos-datasource-plugin-dm8</artifactId>
-    <version>0.0.2</version>
+    <version>${VERSION}</version>
 </dependency>
 
 <dependency>
-    <groupId>com.dameng</groupId>
-    <artifactId>DmJdbcDriver18</artifactId>
-    <version>8.1.1.193</version>
+<groupId>com.dameng</groupId>
+<artifactId>DmJdbcDriver18</artifactId>
+<version>8.1.1.193</version>
 </dependency>
 ```
 
-## 2.导入 nacos dm8 数据库脚本
-在达梦数据库管理工具上创建名为 `nacos` 的表空间，导入一下数据库脚本  
-[数据库脚本](./sql/nacos.sql)
+## 2. 使用达梦DTS迁移工具
+
+达梦DTS能够支持将Nacos原版的MYSQL数据库迁移至支持达梦数据库的脚本。
+
+<img src='https://minio.pigx.top/oss/202406/1718112771.png' alt='1718112771'/>
 
 ## 3.配置 nacos 数据源链接信息
+
 ```
 db:
   num: 1
@@ -46,8 +54,8 @@ db:
       driver-class-name: dm.jdbc.driver.DmDriver
 ```
 
-
 ## 4.执行数据库平台
+
 ```
 spring:
   datasource:

@@ -1,27 +1,28 @@
 package com.pig4cloud.plugin.impl.dm;
 
-import com.alibaba.nacos.plugin.datasource.constants.TableConstant;
+import com.alibaba.nacos.plugin.datasource.mapper.AbstractMapper;
 import com.alibaba.nacos.plugin.datasource.mapper.ConfigInfoBetaMapper;
+import com.alibaba.nacos.plugin.datasource.model.MapperContext;
+import com.alibaba.nacos.plugin.datasource.model.MapperResult;
 import com.pig4cloud.plugin.constants.DataSourceConstant;
 
-public class ConfigInfoBetaMapperByDm extends DmAbstractMapper implements ConfigInfoBetaMapper {
+import java.util.ArrayList;
+import java.util.List;
+
+public class ConfigInfoBetaMapperByDm extends AbstractMapper implements ConfigInfoBetaMapper {
 
 	@Override
-	public String updateConfigInfo4BetaCas() {
-		return "UPDATE config_info_beta SET content = ?,md5 = ?,beta_ips = ?,src_ip = ?,src_user = ?,gmt_modified = ?,app_name = ? "
-				+ "WHERE data_id = ? AND group_id = ? AND (tenant_id = ? OR tenant_id IS NULL) AND (md5 = ? or md5 is null or md5 = '')";
-	}
+	public MapperResult findAllConfigInfoBetaForDumpAllFetchRows(MapperContext context) {
+		int startRow = context.getStartRow();
+		int pageSize = context.getPageSize();
+		String sql = " SELECT t.id,data_id,group_id,tenant_id,app_name,content,md5,gmt_modified,beta_ips,encrypted_data_key "
+				+ " FROM ( SELECT id FROM config_info_beta  ORDER BY id LIMIT " + startRow + "," + pageSize + " )"
+				+ "  g, config_info_beta t WHERE g.id = t.id ";
+		List<Object> paramList = new ArrayList<>();
+		paramList.add(startRow);
+		paramList.add(pageSize);
 
-	@Override
-	public String findAllConfigInfoBetaForDumpAllFetchRows(int startRow, int pageSize) {
-		return " SELECT t.id,data_id,group_id,tenant_id,app_name,content,md5,gmt_modified,beta_ips,encrypted_data_key "
-				+ " FROM ( SELECT rownum ROW_ID,id FROM config_info_beta  WHERE  ROW_ID<=  " + (startRow + pageSize)
-				+ " ORDER BY id )" + " g, config_info_beta t WHERE g.id = t.id AND g.ROW_ID >" + startRow;
-	}
-
-	@Override
-	public String getTableName() {
-		return TableConstant.CONFIG_INFO_BETA;
+		return new MapperResult(sql, paramList);
 	}
 
 	@Override
