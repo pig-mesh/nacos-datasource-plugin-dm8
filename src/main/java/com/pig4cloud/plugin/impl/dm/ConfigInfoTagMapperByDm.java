@@ -1,6 +1,5 @@
 package com.pig4cloud.plugin.impl.dm;
 
-import com.alibaba.nacos.plugin.datasource.mapper.AbstractMapper;
 import com.alibaba.nacos.plugin.datasource.mapper.ConfigInfoTagMapper;
 import com.alibaba.nacos.plugin.datasource.model.MapperContext;
 import com.alibaba.nacos.plugin.datasource.model.MapperResult;
@@ -8,7 +7,7 @@ import com.pig4cloud.plugin.constants.DataSourceConstant;
 
 import java.util.Collections;
 
-public class ConfigInfoTagMapperByDm extends AbstractMapper implements ConfigInfoTagMapper {
+public class ConfigInfoTagMapperByDm extends DmAbstractMapper implements ConfigInfoTagMapper {
 
 	@Override
 	public MapperResult findAllConfigInfoTagForDumpAllFetchRows(MapperContext context) {
