@@ -1,14 +1,19 @@
 Nacos 从 2.2.0 版本开始,可通过 SPI 机制注入多数据源实现插件,并在引入对应数据源实现后,便可在 Nacos 启动时通过读取
 application.properties 配置文件中 spring.datasource.platform 配置项选择加载对应多数据源插件.
 
-![Nacos 插件化实现
-](https://minio.pigx.top/oss/202212/1671179590.jpg)
+![Nacos 插件化实现](https://minio.pigx.top/oss/202212/1671179590.jpg)
 
 > Nacos 官方默认实现 MySQL、Derby ，其他类型数据库接入需要参考下文自己扩展。
 
 ![](https://minio.pigx.top/oss/202212/1671180565.png)
 
 ## 自定义dm8 插件
+
+### 0. 达梦数据库脚本
+
+- [nacos-dm.sql](https://raw.githubusercontent.com/pig-mesh/nacos-datasource-plugin-dm8/refs/heads/master/nacos-dm.sql)
+
+```sql
 
 ### 1.增加dm8数据库插件
 
@@ -18,7 +23,7 @@ application.properties 配置文件中 spring.datasource.platform 配置项选�
 |---------------|-------|
 | 2.2.0 - 2.3.0 | 0.0.2 |
 | 2.3.1 - 2.3.2 | 0.0.3 |
-| 2.4.0 - 2.4.1 | 0.0.4 |
+| 2.4.0 - 2.4.3 | 0.0.4 |
 
 ```xml
 <!--达梦数据库插件-->
@@ -43,13 +48,13 @@ application.properties 配置文件中 spring.datasource.platform 配置项选�
 
 ## 3.配置 nacos 数据源链接信息
 
-```
+```yaml
 db:
   num: 1
   url:
-    0: jdbc:dm://172.27.0.5:5236?schema=nacos
-  user: nacos
-  password: nacos@123
+    0: jdbc:dm://127.0.0.1:5236?schema=PIGXX_CONFIG
+  user: SYSDBA
+  password: SYSDBA
   pool:
     config:
       driver-class-name: dm.jdbc.driver.DmDriver
