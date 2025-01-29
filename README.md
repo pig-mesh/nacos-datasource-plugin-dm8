@@ -11,9 +11,10 @@ application.properties 配置文件中 spring.datasource.platform 配置项选�
 
 ### 0. 达梦数据库脚本
 
-- [nacos-dm.sql](https://raw.githubusercontent.com/pig-mesh/nacos-datasource-plugin-dm8/refs/heads/master/nacos-dm.sql)
+[关于数据迁移
+SQLark 数据迁移，专注于提供全流程的异构数据库迁移服务，通过迁移评估和数据迁移两个环节和自动化语法解析，提前识别可能存在的改造工作，生成最佳迁移策略，一键迁移到目标数据库，最大化降低用户的数据库迁移成本。](https://www.sqlark.com/docs/zh/v1/data-migration/overview.html)
 
-```sql
+<img src='https://minio.pigx.vip/oss/202501/1738162693.png' alt='1738162693'/>
 
 ### 1.增加dm8数据库插件
 
@@ -24,6 +25,7 @@ application.properties 配置文件中 spring.datasource.platform 配置项选�
 | 2.2.0 - 2.3.0 | 0.0.2 |
 | 2.3.1 - 2.3.2 | 0.0.3 |
 | 2.4.0 - 2.4.3 | 0.0.4 |
+| 2.5.0 -  | 0.0.5 |
 
 ```xml
 <!--达梦数据库插件-->
