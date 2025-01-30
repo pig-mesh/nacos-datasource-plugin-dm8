@@ -1,4 +1,4 @@
-com.pig4cloud.plugin.impl.dm.ConfigInfoAggrMapperByDm
+com.pig4cloud.plugin.impl.dm.ConfigInfoGrayMapperByDm
 com.pig4cloud.plugin.impl.dm.ConfigInfoBetaMapperByDm
 com.pig4cloud.plugin.impl.dm.ConfigInfoMapperByDm
 com.pig4cloud.plugin.impl.dm.ConfigInfoTagMapperByDm

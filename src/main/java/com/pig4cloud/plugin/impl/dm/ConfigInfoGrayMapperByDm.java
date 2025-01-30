@@ -7,17 +7,7 @@ import com.pig4cloud.plugin.constants.DataSourceConstant;
 
 import java.util.Collections;
 
-public class ConfigInfoAggrMapperByDm extends DmAbstractMapper implements ConfigInfoGrayMapper {
-
-	@Override
-	public MapperResult updateConfigInfo4GrayCas(MapperContext context) {
-		return ConfigInfoGrayMapper.super.updateConfigInfo4GrayCas(context);
-	}
-
-	@Override
-	public MapperResult findChangeConfig(MapperContext context) {
-		return ConfigInfoGrayMapper.super.findChangeConfig(context);
-	}
+public class ConfigInfoGrayMapperByDm extends DmAbstractMapper implements ConfigInfoGrayMapper {
 
 	@Override
 	public MapperResult findAllConfigInfoGrayForDumpAllFetchRows(MapperContext context) {
