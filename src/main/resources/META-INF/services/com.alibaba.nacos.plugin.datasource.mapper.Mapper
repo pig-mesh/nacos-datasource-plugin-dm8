@@ -7,3 +7,4 @@ com.pig4cloud.plugin.impl.dm.HistoryConfigInfoMapperByDm
 com.pig4cloud.plugin.impl.dm.TenantInfoMapperByDm
 com.pig4cloud.plugin.impl.dm.TenantCapacityMapperByDm
 com.pig4cloud.plugin.impl.dm.GroupCapacityMapperByDm
+com.pig4cloud.plugin.impl.dm.ConfigMigrateMapperByDm

@@ -18,8 +18,6 @@ public class ConfigInfoBetaMapperByDm extends DmAbstractMapper implements Config
 				+ " FROM ( SELECT id FROM config_info_beta  ORDER BY id LIMIT " + startRow + "," + pageSize + " )"
 				+ "  g, config_info_beta t WHERE g.id = t.id ";
 		List<Object> paramList = new ArrayList<>();
-		paramList.add(startRow);
-		paramList.add(pageSize);
 
 		return new MapperResult(sql, paramList);
 	}
