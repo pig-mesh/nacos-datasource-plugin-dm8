@@ -54,8 +54,7 @@ public class ConfigMigrateMapperByDm extends DmAbstractMapper implements ConfigM
 	public MapperResult findConfigIdNeedInsertMigrate(MapperContext context) {
 		String sql = "SELECT ci.id FROM config_info ci WHERE ci.tenant_id = '' AND NOT EXISTS "
 				+ " ( SELECT 1 FROM config_info ci2  WHERE ci2.data_id = ci.data_id AND ci2.group_id = ci.group_id AND ci2.tenant_id = 'public' )"
-				+ " AND ci.id > ?"
-				+ " ORDER BY ci.id LIMIT ?";
+				+ " AND ci.id > ?" + " ORDER BY ci.id LIMIT ?";
 		return new MapperResult(sql,
 				CollectionUtils.list(context.getWhereParameter(FieldConstant.ID), context.getPageSize()));
 	}
@@ -67,9 +66,7 @@ public class ConfigMigrateMapperByDm extends DmAbstractMapper implements ConfigM
 				+ " (ci.src_user <> CAST(? AS VARCHAR) OR ci.src_user IS NULL) AND EXISTS "
 				+ " ( SELECT 1 FROM config_info ci2 WHERE ci2.data_id = ci.data_id AND ci2.group_id = ci.group_id "
 				+ " AND ci2.tenant_id = ? AND ci2.src_user = CAST(? AS VARCHAR) AND ci2.md5 <> ci.md5 "
-				+ " AND ci2.gmt_modified < ci.gmt_modified )"
-				+ " AND ci.id > ?"
-				+ " ORDER BY ci.id LIMIT ?";
+				+ " AND ci2.gmt_modified < ci.gmt_modified )" + " AND ci.id > ?" + " ORDER BY ci.id LIMIT ?";
 		return new MapperResult(sql,
 				CollectionUtils.list(context.getWhereParameter(FieldConstant.SRC_TENANT),
 						context.getWhereParameter(FieldConstant.SRC_USER),
@@ -85,9 +82,7 @@ public class ConfigMigrateMapperByDm extends DmAbstractMapper implements ConfigM
 				+ " (ci.src_user <> CAST(? AS VARCHAR) OR ci.src_user IS NULL) AND EXISTS "
 				+ " ( SELECT 1 FROM config_info_gray ci2 WHERE ci2.data_id = ci.data_id AND ci2.group_id = ci.group_id "
 				+ " AND ci2.gray_name = ci.gray_name AND ci2.tenant_id = ? AND ci2.src_user = CAST(? AS VARCHAR) AND ci2.md5 <> ci.md5 "
-				+ " AND ci2.gmt_modified < ci.gmt_modified )"
-				+ " AND ci.id > ?"
-				+ " ORDER BY ci.id LIMIT ?";
+				+ " AND ci2.gmt_modified < ci.gmt_modified )" + " AND ci.id > ?" + " ORDER BY ci.id LIMIT ?";
 		return new MapperResult(sql,
 				CollectionUtils.list(context.getWhereParameter(FieldConstant.SRC_TENANT),
 						context.getWhereParameter(FieldConstant.SRC_USER),
@@ -120,12 +115,11 @@ public class ConfigMigrateMapperByDm extends DmAbstractMapper implements ConfigM
 
 	@Override
 	public MapperResult getConfigGrayConflictCount(MapperContext context) {
-		String sql =
-				"SELECT COUNT(*) AS count FROM config_info_gray ci1"
-						+ " WHERE ci1.tenant_id = 'public' AND (ci1.src_user <> CAST(? AS VARCHAR) OR ci1.src_user IS NULL)"
-						+ " AND EXISTS (SELECT 1 FROM config_info_gray ci2"
-						+ " WHERE ci2.data_id = ci1.data_id AND ci2.group_id = ci1.group_id AND ci2.gray_name = ci1.gray_name"
-						+ " AND ci2.tenant_id = '' AND (ci2.src_user <> CAST(? AS VARCHAR) OR ci2.src_user IS NULL))";
+		String sql = "SELECT COUNT(*) AS count FROM config_info_gray ci1"
+				+ " WHERE ci1.tenant_id = 'public' AND (ci1.src_user <> CAST(? AS VARCHAR) OR ci1.src_user IS NULL)"
+				+ " AND EXISTS (SELECT 1 FROM config_info_gray ci2"
+				+ " WHERE ci2.data_id = ci1.data_id AND ci2.group_id = ci1.group_id AND ci2.gray_name = ci1.gray_name"
+				+ " AND ci2.tenant_id = '' AND (ci2.src_user <> CAST(? AS VARCHAR) OR ci2.src_user IS NULL))";
 		Object srcUser = context.getWhereParameter(FieldConstant.SRC_USER);
 		return new MapperResult(sql, CollectionUtils.list(srcUser, srcUser));
 	}
@@ -134,8 +128,7 @@ public class ConfigMigrateMapperByDm extends DmAbstractMapper implements ConfigM
 	public MapperResult findConfigGrayIdNeedInsertMigrate(MapperContext context) {
 		String sql = "SELECT ci.id FROM config_info_gray ci WHERE ci.tenant_id = '' AND NOT EXISTS "
 				+ " ( SELECT 1 FROM config_info_gray ci2  WHERE ci2.data_id = ci.data_id AND ci2.group_id = ci.group_id"
-				+ " AND ci2.tenant_id = 'public' AND ci2.gray_name = ci.gray_name )"
-				+ " AND ci.id > ?"
+				+ " AND ci2.tenant_id = 'public' AND ci2.gray_name = ci.gray_name )" + " AND ci.id > ?"
 				+ " ORDER BY ci.id LIMIT ?";
 		return new MapperResult(sql,
 				CollectionUtils.list(context.getWhereParameter(FieldConstant.ID), context.getPageSize()));
