@@ -7,8 +7,6 @@
 
 本插件为 Nacos（2.2.0 版本及以上）提供达梦数据库（DM8）的数据源支持。通过 SPI 机制实现，您只需在 `application.properties` 配置文件中修改 `spring.datasource.platform` 属性即可启用达梦数据库。
 
-![Nacos 插件架构](https://minio.pigx.top/oss/202212/1671179590.jpg)
-
 > Nacos 官方默认支持 MySQL 和 Derby 数据库，本插件扩展了对达梦数据库的支持。
 
 ## 版本兼容性
@@ -50,39 +48,22 @@
 #### 方案一：使用 SQLark 迁移工具
 SQLark 提供全流程的异构数据库迁移服务，通过自动化语法解析，提前识别可能存在的改造工作，生成最佳迁移策略。
 
-![SQLark 迁移工具](https://minio.pigx.vip/oss/202501/1738162693.png)
-
 详细迁移指南请访问 [SQLark 文档](https://www.sqlark.com/docs/zh/v1/data-migration/overview.html)
 
 #### 方案二：使用达梦 DTS 迁移工具
 达梦 DTS 工具支持将 Nacos 的 MySQL 数据库无缝迁移至达梦数据库。
 
-![达梦 DTS 迁移](https://minio.pigx.top/oss/202406/1718112771.png)
-
 ### 3. 配置数据源
 
 在 Nacos 配置文件中添加以下配置：
 
-```yaml
-db:
-  num: 1
-  url:
-    0: jdbc:dm://127.0.0.1:5236?schema=PIGXX_CONFIG
-  user: SYSDBA
-  password: SYSDBA
-  pool:
-    config:
-      driver-class-name: dm.jdbc.driver.DmDriver
-```
-
-### 4. 启用达梦数据库
-
-在应用配置中设置数据库平台为达梦：
-
-```yaml
-spring:
-  datasource:
-    platform: dameng
+```properties
+spring.sql.init.platform=dameng
+db.num=1
+db.url.0=jdbc:dm://127.0.0.1:5236?schema=PIGXX_CONFIG
+db.user=SYSDBA
+db.password=SYSDBA
+db.pool.config.driver-class-name=dm.jdbc.driver.DmDriver
 ```
 
 ## 参与贡献
